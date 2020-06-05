@@ -9,7 +9,8 @@ module.exports = {
   mode: "development",
   output: {
     path: path.resolve(__dirname, "build"),
-    filename:  "[name].[chunkhash].js",
+    filename:  "[name].[chunkhash:8].js",
+    chunkFilename: '[name].[chunkhash:8].chunk.js',
   },
   resolve: {
     extensions: [".js", ".jsx", ".json", ".ts", ".tsx"],
@@ -31,6 +32,29 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'async',
+      minSize: 300,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: '~',
+      name: true,
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendor",
+          chunks: "initial",
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    },
+  },
   plugins: [
     new CopyPlugin({
       patterns: [
@@ -47,17 +71,4 @@ module.exports = {
       filename: "./src/yourfile.css",
     }),
   ],
-  
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          commons: {
-            test: /[\\/]node_modules[\\/]/,
-            name: "vendor",
-            chunks: "initial",
-          },
-        },
-      },
-    },
-  
 };
