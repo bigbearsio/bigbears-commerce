@@ -4,8 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:client": "cd src/client && node_modules/.bin/webpack --env production"
+    "dev:client": "cd src/client && npm install && npm start",
+    "dev:server": "cd src/server && npm install && npm run dev",
+    "build:client": "cd src/client && npm install && node_modules/.bin/webpack --env production",
+    "build:server": "cd src/server && npm install && tsc"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  }
 }
