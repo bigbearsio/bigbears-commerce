@@ -99,7 +99,7 @@ exports.config = (mode) => ({
       patterns: [
         {
           from: path.resolve(__dirname, '..', 'public', 'favicon.ico'),
-          to: path.resolve(__dirname, '..','..', 'dist', 'favicon.ico')
+          to: path.resolve(__dirname, '..','..','..', 'dist', 'favicon.ico')
         },
       ],
     }),
