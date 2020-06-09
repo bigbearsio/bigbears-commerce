@@ -1,0 +1,11 @@
+{
+  "name": "bigbear-commerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:client": "cd src/client && node_modules/.bin/webpack --env production"
+  },
+  "author": "",
+  "license": "ISC"
+}
