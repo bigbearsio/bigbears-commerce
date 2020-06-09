@@ -12,7 +12,7 @@ exports.config = (mode) => ({
   target: "web",
   mode: "development",
   output: {
-    path: path.resolve(__dirname, '..', "dist"),
+    path: path.resolve(__dirname, '..','..','..', "dist"),
     filename: "static/js/[name].[chunkhash:8].js",
     chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
     pathinfo: true,
@@ -99,7 +99,7 @@ exports.config = (mode) => ({
       patterns: [
         {
           from: path.resolve(__dirname, '..', 'public', 'favicon.ico'),
-          to: path.resolve(__dirname, '..', 'dist', 'favicon.ico')
+          to: path.resolve(__dirname, '..','..', 'dist', 'favicon.ico')
         },
       ],
     }),
