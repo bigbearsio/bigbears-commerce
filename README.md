@@ -1,9 +1,15 @@
 # BigBears Commerce App
 BigBears-Commerce App is a minimalist headless ecommerce solution allowing
 
+## Prerequisite
+* NodeJS 12.18 and Up `brew install node`
+
 ### Client - Build
 ```
 cd src/client
+
+// Install Deps
+npm install
 
 // run dev server
 npm start
@@ -24,6 +30,10 @@ OPEN_CAGE_DATA_KEY=8c0892514e884f09af7c09a9b067b02b
 Run && Build:
 ```
 cd src/server
+
+// Install Deps
+npm install
+
 // run dev server
 npm run dev
 
