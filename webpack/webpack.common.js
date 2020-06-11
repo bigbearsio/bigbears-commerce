@@ -8,11 +8,11 @@ const webpack = require("webpack");
 isDevelopment = false;
 
 exports.config = (mode) => ({
-  entry: path.resolve(__dirname, "..", "index.tsx"),
+  entry: path.resolve(__dirname, "..", "src","client", "index.tsx"),
   target: "web",
   mode: "development",
   output: {
-    path: path.resolve(__dirname, '..','..','server', "dist", "public"),
+    path: path.resolve(__dirname, '..', "dist", "public"),
     filename: "static/js/[name].[chunkhash:8].js",
     chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
     pathinfo: true,
@@ -26,6 +26,9 @@ exports.config = (mode) => ({
       {
         test: /\.(ts|tsx)$/,
         loader: "awesome-typescript-loader",
+        options: {
+          configFileName : path.resolve(__dirname, '..', 'src','client', 'tsconfig.json')
+        }
       },
       {
         enforce: "pre",
@@ -98,13 +101,13 @@ exports.config = (mode) => ({
     new CopyPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, '..', 'public', 'favicon.ico'),
+          from: path.resolve(__dirname, '..', 'src','client','public', 'favicon.ico'),
           to: path.resolve(__dirname, '..','..','server', 'dist', 'public', 'favicon.ico')
         },
       ],
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '..', "public", "index.html"),
+      template: path.resolve(__dirname, '..', 'src','client',"public", "index.html"),
     }),
     new MiniCssExtractPlugin({
       filename: 'static/css/[name].[chunkhash:8].css',

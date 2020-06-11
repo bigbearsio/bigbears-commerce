@@ -22,7 +22,7 @@ it should open browser at http://localhost:8080
 
 ### Server - Build
 Prerequisite:
-add `.env` file to server directory and add following data to `server/.env`
+add `.env` file to ROOT directory and add following data to `/.env`
 
 ```
 OPEN_CAGE_DATA_KEY=8c0892514e884f09af7c09a9b067b02b

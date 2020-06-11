@@ -1,5 +1,4 @@
-name: Build - Client 
-
+name: Build
 on:
   push:
     branches: [ master ]
@@ -11,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: src/client
+        working-directory: .
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js 12.x
