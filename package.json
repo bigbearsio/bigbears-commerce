@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage --verbose",
+    "build": "concurrently \"npm run build:client\" \"npm run build:server\"",
     "dev:client": "webpack-dev-server --env development",
     "build:client": "webpack --env production",
     "build:server": "tsc -p ./src/server/tsconfig.json",
