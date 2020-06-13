@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage --verbose",
+    "test": "jest --coverage --verbose --testPathPattern=.*\\.test\\.ts$",
     "build": "concurrently \"npm run build:client\" \"npm run build:server\"",
     "dev:client": "webpack-dev-server --env development",
     "build:client": "webpack --env production",
