@@ -3,6 +3,14 @@ BigBears-Commerce App is a minimalist headless ecommerce solution allowing
 
 ## Prerequisite
 * NodeJS 12.18 and Up `brew install node`
+* Docker 
+
+### Docker - Build
+This will start PostgresDB at port 8432, for development
+
+```
+docker-compose up -d
+```
 
 ### Client - Build
 ```
