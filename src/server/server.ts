@@ -3,8 +3,10 @@ import express from 'express';
 import 'express-async-errors';
 import { applyMiddleware, applyRoutes } from './utils';
 import middleware from './middleware';
+import graphqlHTTP  from 'express-graphql';
 import errorHandlers from './middleware/errorHandlers';
 import routes from './services';
+import { root, schema } from './graphql/schema';
 //import { initDependencies } from './config/index';
 
 process.on('uncaughtException', (e) => {
@@ -18,6 +20,11 @@ process.on('unhandledRejection', (e) => {
 });
 
 const router = express();
+router.use('/graphql', graphqlHTTP({
+  schema: schema,
+  rootValue: root,
+  graphiql: true,
+}));
 applyMiddleware(middleware, router);
 applyRoutes(routes, router);
 applyMiddleware(errorHandlers, router);
