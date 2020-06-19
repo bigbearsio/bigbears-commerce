@@ -3,13 +3,16 @@
 ## Store
 
 ### Types
+```graphql
 input StoreInput {
   title: String
   description: String
   cover?: String
   logo?: String
 }
+```
 
+```graphql
 type StoreInfo {
   id: ID!
   title: String
@@ -17,22 +20,28 @@ type StoreInfo {
   cover?: String
   logo?: String
 }
+```
 
 ### Query
+```graphql
 type Query {
   getAllStore(): StoreInfo[]
   getStore(id: ID!): StoreInfo
 }
+```
 
 ### Mutation
+```graphql
 type Mutation {
   createStore(input: StoreInput): StoreInfo
   updateStore(id:ID!, input:StoreInput): StoreInfo
 }
+```
 
 ## Inventory
 
 ### Types
+```graphql
 input ProductInput {
   title: String
   description: String
@@ -57,7 +66,9 @@ input ProductInput {
   brand: String
   return_policy?: String
 }
+```
 
+```graphql
 input ProductInfo {
   id: ID!
   title: String
@@ -83,16 +94,21 @@ input ProductInfo {
   brand: String
   return_policy?: String
 }
+```
 
 ### Query
+```graphql
 type Query {
   getAllProductsIDs(): int[]
   getAllProductsDetail(): ProductInfo[]
   getProductDetail(id: ID!): ProductInfo
 }
+```
 
 ### Mutation
+```graphql
 type Mutation {
   createProduct(input: ProductInput): ProductInfo
   updateProduct(id:ID!, input:ProductInfo): ProductInfo
 }
+```
