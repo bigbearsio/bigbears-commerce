@@ -1,4 +1,6 @@
 # BigBears Commerce App
+![Build](https://github.com/bigbearsio/bigbears-commerce/workflows/Build/badge.svg?branch=master)
+
 BigBears-Commerce App is a minimalist headless ecommerce solution allowing
 
 ## Prerequisite
