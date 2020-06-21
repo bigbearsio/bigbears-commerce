@@ -19,6 +19,11 @@ process.on('unhandledRejection', (e) => {
   process.exit(1);
 });
 
+process.on('SIGINT', () => {
+  console.log('SIGINT received. Exiting...');
+  process.exit(0);
+});
+
 const router = express();
 router.use('/graphql', graphqlHTTP({
   schema: schema,
