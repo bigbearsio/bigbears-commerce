@@ -25,7 +25,11 @@ process.on('SIGINT', () => {
 });
 
 const router = express();
-router.use('/graphql', graphqlHTTP({
+
+// TODO: Replace this with a reverse proxy
+router.use(express.static('dist/public'))
+
+router.use('/api/graphql', graphqlHTTP({
   schema: schema,
   rootValue: root,
   graphiql: true,

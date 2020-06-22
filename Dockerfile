@@ -1,6 +1,6 @@
-###### Base ######
-FROM node:12.18.1-stretch-slim AS base
-
+FROM node:12.18.1-stretch-slim
+  
+# App
 WORKDIR /app
 
 COPY package*.json ./
@@ -10,14 +10,7 @@ RUN npm install
 COPY . /app
 RUN npm run-script build
 
-###### Server ######
-FROM base AS server
-
+# Entrypoint
 EXPOSE 3000
-CMD ["node", "dist/server.js"]
 
-###### Client ######
-FROM nginx:1.19.0-alpine AS client
-
-COPY --from=base /app/dist/public /usr/share/nginx/html
-EXPOSE 80
+ENTRYPOINT [ "node", "dist/server.js" ]
