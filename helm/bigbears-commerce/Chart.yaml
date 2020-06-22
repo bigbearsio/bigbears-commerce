@@ -1,0 +1,8 @@
+apiVersion: v2
+name: bigbears-commerce
+description: A Helm chart for Bigbears Commerce
+
+type: application
+version: 0.1.0
+
+appVersion: 0.1.0

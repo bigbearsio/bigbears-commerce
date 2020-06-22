@@ -1,0 +1,35 @@
+server:
+  image: 
+    repository: "bigbearsio/commerce-server"
+    tag: "29008ee" 
+    pullPolicy: "IfNotPresent"
+  replicas: 1
+  imagePullSecrets: []
+  resources: {}
+  service:
+    type: ClusterIP
+    port: 3000  
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m 
+  #   memory: 128Mi
+client:
+  image: 
+    repository: "bigbearsio/commerce-client"
+    tag: "29008ee" 
+    pullPolicy: "IfNotPresent"
+  replicas: 1
+  imagePullSecrets: []
+  resources: {}
+  service:
+    type: ClusterIP
+    port: 80  
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m 
+  #   memory: 128Mi
+  
