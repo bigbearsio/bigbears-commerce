@@ -19,8 +19,17 @@ process.on('unhandledRejection', (e) => {
   process.exit(1);
 });
 
+process.on('SIGINT', () => {
+  console.log('SIGINT received. Exiting...');
+  process.exit(0);
+});
+
 const router = express();
-router.use('/graphql', graphqlHTTP({
+
+// TODO: Replace this with a reverse proxy
+router.use(express.static('dist/public'))
+
+router.use('/api/graphql', graphqlHTTP({
   schema: schema,
   rootValue: root,
   graphiql: true,
