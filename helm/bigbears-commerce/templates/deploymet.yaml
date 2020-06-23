@@ -1,28 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "bigbears-commerce.fullname" . }}-server
+  name: {{ include "bigbears-commerce.fullname" . }}
   labels:
     {{- include "bigbears-commerce.labels" . | nindent 4 }}
-    app.kubernetes.io/type: server
 spec:
   replicas: {{ .Values.server.replicas }}
   selector:
     matchLabels:
       {{- include "bigbears-commerce.selectorLabels" . | nindent 6 }}
-      app.kubernetes.io/type: server
   template:
     metadata:
       labels:
         {{- include "bigbears-commerce.selectorLabels" . | nindent 8 }}
-        app.kubernetes.io/type: server
     spec:
       {{- with .Values.server.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       containers:
-        - name: {{ .Chart.Name }}-server
+        - name: {{ .Chart.Name }}
           image: "{{ .Values.server.image.repository }}:{{ .Values.server.image.tag }}"
           imagePullPolicy: {{ .Values.server.image.pullPolicy }}
           ports:

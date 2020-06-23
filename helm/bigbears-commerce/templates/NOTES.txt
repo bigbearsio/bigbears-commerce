@@ -1,6 +1,5 @@
 Get the application URL by running these commands:
 
-kubectl --namespace {{ .Release.Namespace }} port-forward service/bigbears-commerce-server 8300:3000
-kubectl --namespace {{ .Release.Namespace }} port-forward service/bigbears-commerce-client 8000:80
+kubectl --namespace {{ .Release.Namespace }} port-forward service/bigbears-commerce 8300:3000
 
 Then visit the application at localhost:8300, localhost:8000
