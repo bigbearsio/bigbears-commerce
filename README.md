@@ -50,3 +50,29 @@ npm build
 
 ```
 it should open browser at http://localhost:3000/api/v1/search?q=bangkok which return json data.
+
+### Database setup
+Postgres 
+
+```
+CREATE ROLE bigbears WITH LOGIN PASSWORD 'bigbears'
+```
+
+```
+CREATE DATABASE commerce_core;
+```
+
+```
+GRANT ALL PRIVILEGES ON DATABASE commerce_core TO bigbears;
+```
+### Prisma Client
+
+Add configuration in .env file in prisma directory
+
+```
+DATABASE_URL="postgresql://user:password@localhost:5432/commerce_core?schema=public"
+```
+
+```
+dotenv -e .env npx prisma introspect
+```
