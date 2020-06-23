@@ -8,6 +8,9 @@ import errorHandlers from './middleware/errorHandlers';
 import routes from './services';
 import { root, schema } from './graphql/schema';
 //import { initDependencies } from './config/index';
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
 
 process.on('uncaughtException', (e) => {
   console.log('uncaughtException!', e);
@@ -42,7 +45,6 @@ const { PORT = 3000 } = process.env;
 const server = http.createServer(router);
 
 async function start() {
-  //await initDependencies(); 
   server.listen(PORT, () =>
     console.log(`Server is running http://localhost:${PORT}...`),
   );

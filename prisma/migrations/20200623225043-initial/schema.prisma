@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = "***"
+}
+
+model countries {
+  code           Int         @id
+  continent_name String?
+  name           String?
+  merchants      merchants[]
+  users          users[]
+}
+
+model merchants {
+  admin_id      Int?
+  country_code  Int?
+  cover_image   String?
+  cover_logo    String?
+  created_at    DateTime?  @default(now())
+  description   String?
+  id            Int        @id
+  merchant_name String?
+  updated_at    DateTime?
+  updated_by    Int?
+  users         users?     @relation(fields: [admin_id], references: [id])
+  countries     countries? @relation(fields: [country_code], references: [code])
+}
+
+model product_category {
+  code                         Int     @id
+  google_product_category_name String?
+  name                         String?
+}
+
+model users {
+  country_code     Int?
+  created_at       DateTime?   @default(now())
+  email            String?
+  fb_id            String?
+  first_name       String?
+  id               Int         @default(autoincrement()) @id
+  last_name        String?
+  profile_logo_url String?
+  updated_at       DateTime?
+  updated_by       Int?
+  countries        countries?  @relation(fields: [country_code], references: [code])
+  merchants        merchants[]
+}
