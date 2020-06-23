@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "bigbears-commerce.fullname" . }}-server
+  name: {{ include "bigbears-commerce.fullname" . }}
   labels:
     {{- include "bigbears-commerce.labels" . | nindent 4 }}
 spec:
@@ -13,4 +13,3 @@ spec:
       name: http
   selector:
     {{- include "bigbears-commerce.selectorLabels" . | nindent 4 }}
-    app.kubernetes.io/type: server
