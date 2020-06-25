@@ -10,6 +10,9 @@ BigBears-Commerce App is a minimalist headless ecommerce solution allowing
 ### Docker - Build
 This will start PostgresDB at port 8432, for development
 
+The database is initialized only once at startup via a script in `db/init.sql`.
+If the script is changed. Delete the existing database container with `docker-compose rm` before start it up again.
+
 ```
 docker-compose up -d
 ```
@@ -47,20 +50,6 @@ npm run dev
 ```
 it should open browser at http://localhost:3000/api/v1/search?q=bangkok which return json data.
 
-### Database setup
-Postgres 
-
-```
-CREATE ROLE bigbears WITH LOGIN PASSWORD 'bigbears'
-```
-
-```
-CREATE DATABASE commerce_core;
-```
-
-```
-GRANT ALL PRIVILEGES ON DATABASE commerce_core TO bigbears;
-```
 ### Prisma Client
 
 Add configuration in .env file in prisma directory
