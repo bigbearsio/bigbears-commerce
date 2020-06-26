@@ -59,7 +59,7 @@ jobs:
         docker push $DOCKERHUB_REPO/commerce:${GITHUB_SHA::7}
         docker push $DOCKERHUB_REPO/commerce:latest
   deploy:
-    name: Deploy
+    name: deploy
     runs-on: ubuntu-latest
     needs: docker
     steps:
