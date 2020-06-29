@@ -1,7 +1,27 @@
 # BigBears Commerce App
 ![Build](https://github.com/bigbearsio/bigbears-commerce/workflows/Build/badge.svg?branch=master)
 
-BigBears-Commerce App is a minimalist headless ecommerce solution allowing
+## Objectives
+BigBears-Commerce App is a minimalist headless ecommerce solution with following features:
+- allowing merchant to manage their inventory
+- allowing merchant to distributes product to multiple channel
+  - Facebook (launch with v1)
+  - Instagram (launch with v2)
+  - Google Shopping (launch with v2)
+  - Shopee (Planning)
+  - Lazada (Planning)
+  - Amazon
+- allowing merchant to manage order with built-in order management
+
+## Roadmap
+- allowing merchant to distributes product to multiple channel
+  - Instagram (launch with v2)
+  - Google Shopping (launch with v2)
+  - Shopee (Planning)
+  - Lazada (Planning)
+  - Amazon
+- allowing merchant to manage shipment within order management
+- allowing merchant to communicate with buyers using Messenger
 
 ## Prerequisite
 * NodeJS 12.18 and Up `brew install node`
