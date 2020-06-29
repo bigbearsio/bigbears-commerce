@@ -5,6 +5,12 @@ on:
   pull_request:
     branches: [ master ]
 
+env: 
+  PROJECT_ID: bigbears-io
+  GKE_CLUSTER: bigbears-cluster
+  GKE_ZONE: asia-southeast1-b
+  APP_NAME: bigbears-commerce
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -52,3 +58,23 @@ jobs:
       run: | 
         docker push $DOCKERHUB_REPO/commerce:${GITHUB_SHA::7}
         docker push $DOCKERHUB_REPO/commerce:latest
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    needs: docker
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        version: '290.0.1'
+        service_account_key: ${{ secrets.GKE_SA_KEY }}
+        project_id: ${{ env.PROJECT_ID }}
+    - name: Configure kubectl
+      run: |-
+        gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
+    - name: Run Helm Upgrade
+      run: |- 
+        cd helm
+        helm upgrade $APP_NAME $APP_NAME --install --wait --atomic --timeout 7m --set=server.image.tag=${GITHUB_SHA::7}
